@@ -1,0 +1,45 @@
+<h3>Shopping Cart</h3>
+
+<p *ngIf="shoppingCartInstance.shoppingCartItems.length">
+  You have <strong>{{ shoppingCartInstance.totalItemCount }}</strong> items in your cart
+  <button
+  (click)="clearCart()"
+    class="btn btn-light btn-sm">
+    Clear Shopping Cart
+  </button>  
+</p>
+<ng-container *ngIf="shoppingCartInstance.totalItemCount">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th class="quantity-col text-center">Quantity</th>
+        <th class="text-right">Unit Price</th>
+        <th class="text-right">Total Price</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let cart of shoppingCartInstance.shoppingCartItems">
+      <td><img class="thumbnail" [src]="cart.product.imageUrl" alt="image"></td>
+      <td>{{ cart.product.title }}</td>
+      <td><product-quantity [product]="cart.product" [shopping-cart]="shopCart"></product-quantity></td>
+      <td class="text-right">{{ cart.product.price | currency:USD:'symbol' }}</td>
+      <td class="text-right">{{ cart.totalPrice | currency:USD:'symbol' }}</td>
+      <td>{{ cart.product.category }}</td>
+    </tr>
+    <tfoot class="tfoot">
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><h3>Total Price</h3></td>
+        <td class="text-right"><strong>{{ shoppingCartInstance.totalPrice | currency:USD:'symbol'}}</strong></td>
+      </tr>       
+    </tfoot>
+  </table>
+  <div *ngIf="shoppingCartInstance.shoppingCartItems.length">
+      <a class="btn btn-primary btn-sm" href="/check-out">Checkout</a>
+  </div>
+  
+</ng-container>

@@ -1,0 +1,13 @@
+<div class="sticky-top">
+  <ul class="list-group">
+    <a routerLink="/" [ngClass]="{'active':!selectedCategory}" class="list-group-item">
+      All Categories
+      <span *ngIf="!selectedCategory && items">({{ (items===undefined? 0 : items.length) }})</span>
+    </a>
+    <a *ngFor="let c of categoryList" routerLink="/" [queryParams]="{category:c.key}" class="list-group-item"
+      [ngClass]="{'active':(selectedCategory === c.key)}">
+      {{ c.name }}
+      <span *ngIf="selectedCategory === c.key && items">({{ (items===undefined? 0 : items.length) }})</span>
+    </a>
+  </ul>
+</div>

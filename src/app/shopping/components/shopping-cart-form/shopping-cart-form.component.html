@@ -1,0 +1,25 @@
+<h4>Shipping</h4>
+    <form class="form-group" [formGroup]="shippingForm">
+      <div class="form-group">
+        <label for="price">Name</label>
+        <input type="text" formControlName="name" class="form-control">
+        <div *ngIf="name.touched && !name.valid" [ngClass]="{'alert alert-danger': 'name.touched && !name.valid'}">Name is required</div>
+      </div>
+      <div formGroupName="address">
+        <div class="form-group">
+          <label for="price">Address1</label>
+          <input type="text" formControlName="address1" class="form-control">
+          <div *ngIf="address1.touched && !address1.valid" [ngClass]="{'alert alert-danger': 'address1.touched && !address1.valid'}">Address is required</div>
+        </div>
+        <div class="form-group">
+          <label for="price">Address2</label>
+          <input type="text" formControlName="address2" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price">City</label>
+        <input type="text" formControlName="city" class="form-control">
+        <div *ngIf="city.touched && !city.valid" [ngClass]="{'alert alert-danger': 'city.touched && !city.valid'}">City is required</div>
+      </div>
+      <button class="btn btn-primary" (click)="placeOrder()">Place Order</button>
+    </form>

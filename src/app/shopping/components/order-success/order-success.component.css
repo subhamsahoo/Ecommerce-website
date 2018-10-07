@@ -1,0 +1,10 @@
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    border-style: solid;
+    border-bottom-width: 0.2px;
+    border-color: cornflowerblue;
+    background-size: inherit;
+}

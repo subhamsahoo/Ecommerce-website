@@ -1,0 +1,17 @@
+<strong><label>Total items</label> {{ shoppingCartInstance.totalItemCount }}</strong><br>
+<table class="table">
+  <tbody>
+    <tr *ngFor="let cart of shoppingCartInstance.shoppingCartItems">
+      <td><strong>{{ cart.product.title }}</strong></td>
+      <td>{{ cart.quantity }} x {{ cart.product.price | currency:USD:'symbol' }} = </td>
+      <td>{{ cart.totalPrice | currency:USD:'symbol' }}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td><strong><label>Grand Total</label></strong></td>
+      <td></td>
+      <td>{{ shoppingCartInstance.totalPrice | currency }}</td>
+    </tr>
+  </tfoot>
+</table>
