@@ -13,7 +13,12 @@ import { Subscription } from "rxjs";
 export class ProductFormComponent implements OnInit {
   categories$: Observable<any[]>;
   saveStatus;
-  currentProduct = ({} = null);
+  currentProduct = {
+    title: "",
+    price: "",
+    imageUrl: "",
+    category: ""
+  };
   prodSub: Subscription;
   productId;
 
